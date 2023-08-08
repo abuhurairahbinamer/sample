@@ -1,5 +1,4 @@
 const Joi=require('joi');
-let name="aliyjft"
 const bcryptjs=require('bcryptjs');
 const User=require("../models/user");
 const userDTO = require('../dto/user');
@@ -10,7 +9,6 @@ const authController={
 async register(req,res,next){
     // console.log(req.body)
 //1.validate user input
-//commemt
 const userRegisterSchema=Joi.object({
     username:Joi.string().min(5).max(30).required(), 
     name:Joi.string().max(30).required(),
