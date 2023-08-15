@@ -19,7 +19,7 @@ const Navbar = () => {
     </>
   }
     </nav>
-    <div>
+    <div className={styles.seperator}>
 
     </div>
 
