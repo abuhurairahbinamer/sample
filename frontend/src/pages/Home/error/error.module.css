@@ -6,9 +6,28 @@
     min-height: 60vh;
 
 
-
-
     /* display: grid;
     place-items: center;
     min-height: 60vh; */
+}
+
+.errorheader{
+    color: red;
+    font-size: 40px;
+    font-weight: bold;
+
+}
+
+      
+.errrobody{
+font-size: 30px;
+margin: 20px 0;
+
+}
+
+.homelink{
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(70, 70, 248);
+    margin-left: 10px;
 }

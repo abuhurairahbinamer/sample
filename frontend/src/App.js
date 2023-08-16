@@ -13,7 +13,8 @@ console.log("app run")
    <BrowserRouter>
    <div className={styles.layout}>
     <Navbar/>
-   
+   {/* {!isAuth && (<p>this one is good</p>)}
+   {!isAuth && <p>this one is not bad</p>} */}
    <Routes>
     <Route path='/' exact element={<div className={styles.main}><Home/></div>}/>
   

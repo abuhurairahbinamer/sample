@@ -4,11 +4,11 @@ import styles from './error.module.css'
 const Error = () => {
   return (
     <div className={styles.error}>
-    <div>
+    <div className={styles.errorheader}>
         Error 404 - Page Not found
         </div>
-        <div>Go back to
-             <Link to='/'>
+        <div className={styles.errrobody}>Go back to
+             <Link to='/' className={styles.homelink}>
 
              home
              </Link>

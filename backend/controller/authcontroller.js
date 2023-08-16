@@ -270,4 +270,3 @@ return res.status(200).json({User:userDto,auth: true})
 }
 module.exports=authController;
 
-
