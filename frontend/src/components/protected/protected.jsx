@@ -6,7 +6,7 @@ const Protected = ({isAuth,children}) => {
   }
   
   else{
-return <Navigate to='/log-in' />
+return <Navigate to='/login' />
   }    
 
   

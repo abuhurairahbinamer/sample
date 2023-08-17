@@ -5,6 +5,7 @@ import Home from './pages/Home/Home';
 import Protected from './components/protected/protected';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Error from './pages/Home/error/Error';
+import Login from './pages/Login/Login';
 function App() {
 const isAuth=false;
 console.log("app run")
@@ -27,10 +28,10 @@ console.log("app run")
     <Route path='/submit' exact element={<Protected isAuth={isAuth} > <div className={styles.main}>submit a blog</div></Protected>}/>
   
 
-    <Route path='/log-in' exact element={<div className={styles.main}>login page</div>}/>
+    <Route path='/login' exact element={<div className={styles.main}><Login/></div>}/>
   
   
-    <Route path='/sign-up' exact element={<div className={styles.main}>sign-up page</div>}/>
+    <Route path='/signup' exact element={<div className={styles.main}>sign-up page</div>}/>
     
     <Route path="*" element={<div className={styles.main}><Error/></div>} />
 

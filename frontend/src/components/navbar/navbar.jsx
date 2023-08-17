@@ -14,8 +14,8 @@ const Navbar = () => {
     <NavLink className={({isActive}) => isActive ? styles.activeStyle:styles.inactiveStyle} to='/submit'>submit a blog</NavLink>
     {isAuthenticated ? <NavLink><button className={styles.logOutButton}>logout</button></NavLink>:
     <> 
-    <NavLink className={({isActive}) => isActive ? styles.activeStyle:styles.inactiveStyle} to='/log-in'><button className={styles.login}>log in</button></NavLink>
-    <NavLink className={({isActive}) => isActive ? styles.activeStyle:styles.inactiveStyle} to='/sign-up'><button className={styles.signup} >sing up</button></NavLink>
+    <NavLink className={({isActive}) => isActive ? styles.activeStyle:styles.inactiveStyle} to='/login'><button className={styles.login}>log in</button></NavLink>
+    <NavLink className={({isActive}) => isActive ? styles.activeStyle:styles.inactiveStyle} to='/signup'><button className={styles.signup} >sing up</button></NavLink>
     </>
   }
     </nav>
