@@ -7,10 +7,20 @@ const errorHandler=require('./middleware/errorHandling')
 // const User=require('./models/user');
 const router=require('./routes/index')
 const cookieParser=require('cookie-parser');
+const cors=require('cors');
+
+
+const corsOption={
+    credentials:true,
+    origin:['http://localhost:3000']
+}
+
+
+
 
 app.use(cookieParser());
 app.use(express.json({limit:"50mb"}));  // application can send and receive data in jason form -->{limit:"50mb"} is used to increase the limit of the req.body i.e if larger image is passed than it will not thrown the error
-
+app.use(cors(corsOption))
 app.use('/storage',express.static('storage'));  // for making image accessible on server
 
 app.use(router);

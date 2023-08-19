@@ -3,7 +3,51 @@ import styles from './Login.module.css'
 import TextInput from '../../components/TextInput/textInput' 
 import loginSchema from '../../schemas/loginSchema'
 import {useFormik} from "formik"
+import { login } from '../../api/internal'
+import {setUser} from '../../store/userSlice'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 const Login = () => {
+const navigate= useNavigate();
+const dispatch=useDispatch();
+// console.log(process.env.REACT_APP_INTERNAL_API_PATH);
+
+const [error,setError]=useState('')
+
+const handleLogin=async ()=>{
+
+  let data={
+    username:values.username,
+    password:values.password
+  }
+// console.log(data);
+const response=await login(data)
+
+if(response.status===200){
+
+//1. setUser
+const user={
+  _id:response.data.user._id,
+  email:response.data.user.email,
+  username:response.data.user.username,
+  auth:response.data.auth
+}
+dispatch(setUser(user))
+//2. redirect->homepage
+navigate('/')
+}
+
+else if(response.code==='ERR_BAD_REQUEST'){
+  // display error message
+setError(response.response.data.message)
+
+
+}
+
+}
+
+
 
 
 const {values,touched,handleBlur,handleChange,errors}=useFormik({
@@ -13,7 +57,9 @@ const {values,touched,handleBlur,handleChange,errors}=useFormik({
   },
   validationSchema:loginSchema
 })
+
 console.log("hellow");
+
   return (
 <div className={styles.logoinWrapper}>
 
@@ -38,9 +84,12 @@ console.log("hellow");
          perror={errors.password && touched.password ? 1:undefined}
          errormessage={errors.password}
         />
-        <button className={styles.logInButton}>Log In</button>
+        <button  className={styles.logInButton} onClick={()=>handleLogin()} >Log In</button>
 
-        <div className={styles.classForLast}>Don't have an account? <button className={styles.createAccount}>register</button></div>
+        <div className={styles.classForLast}>Don't have an account? <button className={styles.createAccount} onClick={ ()=>navigate('/signup')} >register</button>
+        {error!=="" ? <p className={styles.errorMessage}>{error}</p> :""}
+        
+        </div>
 </div>
   )
 }

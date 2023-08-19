@@ -103,6 +103,7 @@ return res.status(201).json({user:userDto,auth:true}) // auth true will be discu
 },
 async login(req,res,next){
 //1.validate user input
+
 const userLoginSchema=Joi.object({
     username:Joi.string().min(5).max(25).required(),
     password:Joi.string().pattern(passwordPattern).required()
@@ -110,6 +111,7 @@ const userLoginSchema=Joi.object({
 //2.if validation error ->return error
 const {error}=userLoginSchema.validate(req.body)
 if(error){
+    
     // console.log("hellow")
     return next(error)
 
@@ -117,6 +119,7 @@ if(error){
 //3.match username 
 const {username,password}=req.body;
 let user
+
 try {
      user=await User.findOne({username:username})
     if(!user){
