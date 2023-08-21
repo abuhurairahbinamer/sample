@@ -8,21 +8,31 @@ import {setUser} from '../../store/userSlice'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-const Login = () => {
+import { useEffect } from 'react'
+const Login = (props) => {  // by me
 const navigate= useNavigate();
 const dispatch=useDispatch();
 // console.log(process.env.REACT_APP_INTERNAL_API_PATH);
+// console.log("hellow world",props.auth)
+useEffect(() => {
+ 
+  if(props.auth){     // by me
+    navigate('/')
+  }
+}, [navigate,props.auth]);
 
 const [error,setError]=useState('')
 
-const handleLogin=async ()=>{
+const handleLogin = async ()=>{
 
   let data={
     username:values.username,
     password:values.password
   }
 // console.log(data);
+
 const response=await login(data)
+// console.log(response);
 
 if(response.status===200){
 
@@ -45,6 +55,10 @@ setError(response.response.data.message)
 
 }
 
+else{   // by me
+  setError(response.message);
+}
+
 }
 
 
@@ -58,10 +72,10 @@ const {values,touched,handleBlur,handleChange,errors}=useFormik({
   validationSchema:loginSchema
 })
 
-console.log("hellow");
+// console.log("hellow");
 
   return (
-<div className={styles.logoinWrapper}>
+        <div className={styles.logoinWrapper}>
 
         <div className={styles.loginHeader}> Log in to Your account</div>
         <TextInput 
