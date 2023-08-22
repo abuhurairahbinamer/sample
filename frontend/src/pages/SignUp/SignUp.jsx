@@ -7,14 +7,49 @@ import { useFormik } from 'formik'
 import { setUser } from '../../store/userSlice'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-
+import { signup } from '../../api/internal'
 const SignUp = () => {
   const navigate=useNavigate();
   const dispathch=useDispatch();
   const [error,setError]=useState('');
 
  const handleSignUp= async() =>{
+const data={
+  name:values.name,
+  username:values.username,
+  email:values.email,
+  password:values.password,
+  confirmPassword:values.confirmPassword
+}
+   
+   const response=await signup(data);
+   if(response.status===201){
+    //setUser
+    const user={
+      _id:response.data.user._id,
+      email:response.data.user.email,
+      username:response.data.user.username,
+      auth:response.data.auth
+    }
+    dispathch(setUser(user));
+    // redirect to home
 
+    navigate('/') 
+ 
+   }
+
+   else if(response.code==='ERR_BAD_REQUEST'){
+    // display error message
+  setError(response.response.data.message)
+  
+  
+  }
+  
+  else{   // by me
+    setError(response.message);
+  }
+   
+   
  }
 
 

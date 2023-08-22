@@ -21,7 +21,7 @@ export const userSlice=createSlice({
 
 
         },
-        resetUser:(state,action)=>{
+        resetUser:(state,action)=>{  // if we remove action in parameter then no problem
         state._id="";
         state.email="";
         state.username="";

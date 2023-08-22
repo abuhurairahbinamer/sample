@@ -4,9 +4,11 @@ import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useDispatch } from "react-redux";
 import { resetUser } from '../../store/userSlice';
+import { signOut } from '../../api/internal';
 const Navbar = () => {
   const dispatch = useDispatch();
-const handleSingout=()=>{
+const handleSingout= ()=>{
+   signOut();
   dispatch(resetUser());
 }
 
