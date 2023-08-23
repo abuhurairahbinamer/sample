@@ -34,6 +34,11 @@
     margin-top: 30px;
 }
 
+.signUpButton:disabled{
+    background-color: brown;
+}
+
+
 .login{
     margin-left: 10px;
     color: #16c784;

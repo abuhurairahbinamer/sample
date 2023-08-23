@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import styles from './signUp.module.css'
 import TextInput from '../../components/TextInput/textInput'
@@ -8,12 +8,21 @@ import { setUser } from '../../store/userSlice'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { signup } from '../../api/internal'
-const SignUp = () => {
+const SignUp = (props) => {
   const navigate=useNavigate();
   const dispathch=useDispatch();
   const [error,setError]=useState('');
 
+useEffect(()=>{
+    if(props.auth){
+        navigate(-1);
+        // navigate('/');
+    }
+},[navigate,props.auth])
+
+
  const handleSignUp= async() =>{
+    
 const data={
   name:values.name,
   username:values.username,
@@ -125,7 +134,18 @@ validationSchema : signUpSchema
              errormessage={errors.confirmPassword}
         /> 
 
-        <button className={styles.signUpButton} onClick={handleSignUp}>sign Up</button>
+        <button className={styles.signUpButton}  disabled={
+          !values.username ||
+          !values.password ||
+          !values.name ||
+          !values.confirmPassword ||
+          !values.email ||
+          errors.username ||
+          errors.password ||
+          errors.confirmPassword ||
+          errors.name ||
+          errors.email
+        } onClick={handleSignUp}>sign Up</button>
        <br />
         <span>Already have an account <button className={styles.login} onClick={()=>{navigate('/login')}}>Log in</button></span>
         {error!=="" ? <p className={styles.errorMessage}>{error}</p> :""}

@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
+// import { Navigate } from 'react-router-dom'
 const Login = (props) => {  // by me
 const navigate= useNavigate();
 const dispatch=useDispatch();
@@ -18,13 +19,15 @@ useEffect(() => {
  
   if(props.auth){     // by me
     navigate('/')
+    // or
+    // return <Navigate to='/'/>  //you can,t use it
   }
 }, [navigate,props.auth]);
 
 const [error,setError]=useState('')
 
 const handleLogin = async ()=>{
-
+// alert();
   let data={
     username:values.username,
     password:values.password
@@ -98,7 +101,7 @@ const {values,touched,handleBlur,handleChange,errors}=useFormik({
          perror={errors.password && touched.password ? 1:undefined}
          errormessage={errors.password}
         />
-        <button  className={styles.logInButton} onClick={()=>handleLogin()} >Log In</button>
+        <button  className={styles.logInButton} disabled={errors.username || errors.password || !values.username || !values.password} onClick={()=>handleLogin()} >Log In</button>
 
         <div className={styles.classForLast}>Don't have an account? <button className={styles.createAccount} onClick={ ()=>navigate('/signup')} >register</button>
         {error!=="" ? <p className={styles.errorMessage}>{error}</p> :""}

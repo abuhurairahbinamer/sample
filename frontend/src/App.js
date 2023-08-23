@@ -35,7 +35,7 @@ console.log("app run")
     <Route path='/login' exact element={<div className={styles.main}><Login auth={isAuth}/></div>}/>
   
   
-    <Route path='/signup' exact element={<div className={styles.main}><SignUp/></div>}/>
+    <Route path='/signup' exact element={<div className={styles.main}><SignUp auth={isAuth}/></div>}/>
     
     <Route path="*" element={<div className={styles.main}><Error/></div>} />
 
