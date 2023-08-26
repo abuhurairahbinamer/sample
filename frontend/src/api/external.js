@@ -7,6 +7,7 @@ const NEWS_API_ENDPOINT =
 let response;
 try {
     response= await axios.get(NEWS_API_ENDPOINT);
+    // console.log(response);
     response=response.data.articles.slice(0,15);
 } catch (error) {
     return error

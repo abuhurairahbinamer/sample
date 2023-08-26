@@ -14,6 +14,7 @@ let response;
 try {
     
     response = await api.post('/login',data)
+    // return response; you can also write here
 } catch (error) {
 
     return error;

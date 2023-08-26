@@ -1,0 +1,14 @@
+.Scard{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-around !important;
+    /* background-color: brown; */
+    /* color: aliceblue; */
+}
+
+.mb{
+    margin-bottom: 20px;
+    /* border-radius: 20px; */
+     color: aliceblue;
+     cursor: pointer;
+}

@@ -10,6 +10,7 @@ try {
 } catch (error) {
     console.log("Error is:"+error);
 }
+
 }
 
 module.exports= dbconnect;
