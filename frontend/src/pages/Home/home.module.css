@@ -1,14 +1,27 @@
 .Scard{
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: space-around !important;
+    display: flex ;
+    flex-wrap: wrap ;
+    justify-content: space-around ;
+    text-align: center;
     /* background-color: brown; */
     /* color: aliceblue; */
 }
 
 .mb{
     margin-bottom: 20px;
-    /* border-radius: 20px; */
+    border-radius: 20px;
+    overflow: hidden;    /* by me because on giving border radius card image was going outside the tag*/
      color: aliceblue;
      cursor: pointer;
+}
+
+.header{
+    font-size: 30px;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.wrapper{
+    width: 80%;
+    margin: auto;
 }
