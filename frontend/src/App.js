@@ -2,6 +2,7 @@ import styles from './App.module.css'
 import Navbar from './components/navbar/navbar';
 import Footer from './components/footer/footer';
 import Home from './pages/Home/Home';
+import Crypto from './pages/crypto/crypto';
 import Protected from './components/protected/protected';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Error from './pages/Home/error/Error';
@@ -23,7 +24,7 @@ console.log("app run")
    <Routes>
     <Route path='/' exact element={<div className={styles.main}><Home/></div>}/>
   
-    <Route path='/crypto' exact element={<div className={styles.main}>crypto</div>}/>
+    <Route path='/crypto' exact element={<div className={styles.main}><Crypto/></div>}/>
   
  
     <Route path='/blogs' exact element={<Protected isAuth={isAuth}> <div className={styles.main}>blogs</div></Protected>}/>
