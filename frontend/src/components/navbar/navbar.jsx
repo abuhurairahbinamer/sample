@@ -7,8 +7,8 @@ import { resetUser } from '../../store/userSlice';
 import { signOut } from '../../api/internal';
 const Navbar = () => {
   const dispatch = useDispatch();
-const handleSingout= ()=>{
-   signOut();
+const handleSingout= async()=>{
+  await signOut();
   dispatch(resetUser());
 }
 
