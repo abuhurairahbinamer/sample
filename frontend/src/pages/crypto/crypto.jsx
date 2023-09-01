@@ -17,6 +17,7 @@ useEffect(()=>{
     if(response.name){
         setError(response.message)
         // console.log(error);
+        
     }
      setCrypto(response); 
 
@@ -27,6 +28,15 @@ useEffect(()=>{
     }
 
 },[])
+
+const positive={
+  color:"green"
+}
+
+const negative={
+  color:"red"
+}
+
 
 console.log(crypto);
   return (
@@ -73,14 +83,15 @@ console.log(crypto);
       <tr key={ind}>
       <td className={styles.bold}>{ele.market_cap_rank}</td>
       <td> <div className={styles.logo}>
-                <img src={ele.image} width={40} height={40} alt='nothing' /> {ele.name}</div>
+                <img  src={ele.image} width={40} height={40} alt='nothing' /> {ele.name}</div>
                 </td>
       <td>{ele.symbol}</td>
       <td>{ele.current_price}</td>
-      <td>{ele.price_change_percentage_24h}</td>
+      <td style={ele.price_change_percentage_24h>0? positive : negative}>{ele.price_change_percentage_24h}</td>
       </tr>
     ))
   }
+
 
 
   </tbody>
