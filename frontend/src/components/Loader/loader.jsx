@@ -7,8 +7,8 @@ const Loader = ({text}) => {
        <h2>Loading {text}</h2>
        
        <Rings
-  height="200"
-  width="200"
+  height="100"
+  width="100"
   color="blue"
   radius="6"
   wrapperStyle={{}}

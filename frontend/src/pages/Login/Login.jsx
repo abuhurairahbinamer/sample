@@ -9,10 +9,12 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import Loader from '../../components/Loader/loader'
 // import { Navigate } from 'react-router-dom'
 const Login = (props) => {  // by me
 const navigate= useNavigate();
 const dispatch=useDispatch();
+const [load,setLoad]=useState(null);
 // console.log(process.env.REACT_APP_INTERNAL_API_PATH);
 // console.log("hellow world",props.auth)
 useEffect(() => {
@@ -27,6 +29,7 @@ useEffect(() => {
 const [error,setError]=useState('')
 
 const handleLogin = async ()=>{
+  setLoad(true);
 // alert();
   let data={
     username:values.username,
@@ -62,6 +65,9 @@ else{   // by me
   setError(response.message);
 }
 
+setLoad(false)
+
+
 }
 
 
@@ -80,6 +86,9 @@ const {values,touched,handleBlur,handleChange,errors}=useFormik({
   return (
         <div className={styles.logoinWrapper}>
 
+  {load ? <Loader text="please wait"/>: ""}
+
+   
         <div className={styles.loginHeader}> Log in to Your account</div>
         <TextInput 
         type='text'
