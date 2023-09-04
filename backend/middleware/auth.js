@@ -9,6 +9,7 @@ const error={
     status:401,
     message:"unathorized"
 }
+
 return next(error);
 }
 
@@ -24,7 +25,12 @@ try {
     req.user=userDto
     next();
 
-} catch (error) {
+} catch (err) {
+    // console.log(err)--> jwt expired error came   
+    const error={
+        status:401,
+        message:"unathorized"
+    } 
     return next(error)
 }
 
