@@ -2,3 +2,24 @@
     width: 60%;
     margin: auto;
 }
+
+.child{
+    border: solid 1px white;
+    /* text-align: center; */
+   min-height: 500px;
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* overflow: hidden; */
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.forimage{
+width: 90%;
+height: 400px;
+}
+

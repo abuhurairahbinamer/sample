@@ -34,15 +34,16 @@ setLoad(false)
 console.log(blogs);
   return (
     <>
-{load ? <Loader text="Loading Blogs"/> :
+{load ? <Loader text="Blogs"/> :
     <div className={styles.parent}>
         <br /><br />
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus quibusdam ipsum est voluptates sint? Excepturi amet, ut hic doloribus minus porro alias nisi voluptates repellat, similique incidunt, autem accusamus voluptatem?
-    
-njkjnbjk
+
     {blogs.map((ele,ind,arr)=>(
-<div key={ind}>
+<div className={styles.child} key={ind}>
+    <h1>{ele.title}</h1>
+<img className={styles.forimage} src={ele.photo} alt='man' />
 <p>{ele.content}</p>
+
 </div>        
     ))}
     </div>
