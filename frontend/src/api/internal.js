@@ -61,3 +61,14 @@ let response;
     return response;
 }
 
+
+export const submitABlog = async (data) =>{
+    let response;
+    try {
+        response= api.post("/blog",data)
+    } catch (error) {
+        return error;
+    }
+    return response;
+}
+

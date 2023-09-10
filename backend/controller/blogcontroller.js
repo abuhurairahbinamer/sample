@@ -27,6 +27,7 @@ async create(req,res,next){
         photo:Joi.string().required()
       })
 
+//  console.log(req.body);     
 const {error}=createBlogSchema.validate(req.body);
 if(error){
   console.log("validation error")

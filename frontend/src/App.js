@@ -9,6 +9,7 @@ import Error from './pages/Home/error/Error';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Blogs from './pages/Blogs/Blogs';
+import BlogSubmit from './pages/BlogSubmit/blogSubmit';
 import { useSelector } from 'react-redux';
 function App() {
 const isAuth=useSelector((state)=>state.users.auth);
@@ -58,7 +59,7 @@ console.log("app run")
     <Route path='/blogs' exact element={<Protected isAuth={isAuth}> <div className={styles.main}><Blogs/></div></Protected>}/>
   
   
-    <Route path='/submit' exact element={<Protected isAuth={isAuth} > <div className={styles.main}>submit a blog</div></Protected>}/>
+    <Route path='/submit' exact element={<Protected isAuth={isAuth} > <div className={styles.main}><BlogSubmit/></div></Protected>}/>
   
 
     <Route path='/login' exact element={<div className={styles.main}><Login auth={isAuth}/></div>}/>
