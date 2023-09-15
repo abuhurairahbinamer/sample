@@ -123,7 +123,7 @@ let IdObject={
  // so conslusion is you can pass the object name or you can manually pass object
 try {
    blog= await Blog.findOne(IdObject).populate('author');
-   console.log("hellow find by id")
+  //  console.log("hellow find by id")
 } catch (error) {
 
   return next (error);
@@ -261,3 +261,4 @@ async delete(req,res,next){
 }
 
 module.exports=blogController;
+

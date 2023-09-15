@@ -67,7 +67,7 @@ const submit= async()=>{
       {error && data.content===""? <p className={styles.back}>please enter content</p>:""}
       <div>
         <span className={styles.fontsize}>Choose a photo</span>
-      <input onChange={(e)=>getphoto(e)} name='photo' className={styles.file} type="file" />
+      <input onChange={(e)=>getphoto(e)} name='photo' className={styles.file} type="file" accept='image/jpg, image/jpeg ,image/png' />
       {data.photo ? <img className={styles.image} src={data.photo} alt='blog'/> : ""}
       </div>
       {error && data.photo===""? <p className={styles.back}>please enter photo</p>:""}

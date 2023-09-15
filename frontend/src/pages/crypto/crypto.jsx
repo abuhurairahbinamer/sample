@@ -17,7 +17,6 @@ useEffect(()=>{
     if(response.name){
         setError(response.message)
         // console.log(error);
-        
     }
      setCrypto(response); 
 

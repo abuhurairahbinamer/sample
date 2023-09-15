@@ -11,6 +11,12 @@ const Blogs = () => {
     const [load,setLoad]=useState(false);
     const dispatch = useDispatch();
     const navigate= useNavigate();
+
+    const detail=(id)=>{
+    //  alert(id);
+    navigate(`/detail/${id}`)
+    }
+
 useEffect(()=>{
     
 (async function getBlogs(){
@@ -39,7 +45,7 @@ console.log(blogs);
         <br /><br />
 
     {blogs.map((ele,ind,arr)=>(
-<div className={styles.child} key={ind}>
+<div onClick={()=>detail(ele._id)} className={styles.child} key={ind}>
     <h1>{ele.title}</h1>
 <img className={styles.forimage} src={ele.photo} alt='man' />
 <p>{ele.content}</p>

@@ -65,10 +65,22 @@ let response;
 export const submitABlog = async (data) =>{
     let response;
     try {
-        response= api.post("/blog",data)
+        response= await api.post("/blog",data)
     } catch (error) {
+        console.log("hellow",error)
         return error;
     }
     return response;
+}
+
+
+export const getBlogById=async (id)=>{
+let response;
+try {
+    response = await api.get(`/blog/${id}`)
+} catch (error) {
+    return error;
+}
+return response;
 }
 
