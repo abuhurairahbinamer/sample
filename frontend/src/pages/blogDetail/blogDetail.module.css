@@ -1,0 +1,82 @@
+.parent{
+    width: 80%;
+    margin: auto;
+}
+
+.child{
+    padding-top: 45px;
+    /* text-align: center; */
+}
+
+.police{
+    width: 80%;
+    text-align: center;
+}
+
+.last{
+    float: right;
+}
+
+.edit{
+    padding: 5px 10px;
+    color: white;
+    background-color: rgb(58, 229, 58);
+    border: none;
+    border-radius: 20px;
+
+}
+
+
+.delete{
+    padding: 5px 10px;
+    color: white;
+    background-color:rgb(248, 63, 63);
+    border: none;
+    border-radius: 20px; 
+}
+
+.delete:focus{
+    border: solid 1px rgb(117, 109, 109);
+}
+
+.edit:focus{
+    border:1px solid rgb(143, 135, 135)
+}
+
+
+.like{
+    width: 80%;
+    height: 400px;
+    background-color: red;
+    float: right;
+    text-align: center;
+    overflow-y:auto;
+}
+
+
+
+.pol{
+    width: 80%;
+    float: right;
+    text-align: center;
+    margin-top: 110px;
+
+
+}
+
+.input{
+ border-radius: 10px;
+ border:  1px solid white;  
+ padding: 10px; 
+ /* outline: none; */
+}
+
+.post{
+    margin-left: 20px;
+    padding: 5px 10px;
+    background-color: rgb(66, 66, 252);
+    border:none;
+    border-radius: 10px;
+
+}
+
