@@ -84,3 +84,36 @@ try {
 return response;
 }
 
+
+export const getComments=async (id)=>{
+let response;
+try {
+    response=await api.get(`/comment/${id}`)
+} catch (error) {
+    return error;
+}
+
+return response;
+
+
+}
+
+
+
+
+export const PostComments=async (data)=>{
+    let response;
+    try {
+        response=await api.post(`/comment`,data)
+    } catch (error) {
+        return error;
+    }
+    
+    return response;
+    
+    
+    }
+    
+    
+
+

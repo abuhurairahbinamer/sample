@@ -47,19 +47,36 @@
 .like{
     width: 80%;
     height: 400px;
-    background-color: red;
+    /* background-color: red; */
     float: right;
-    text-align: center;
+    text-align:left;
     overflow-y:auto;
 }
 
+
+.like::-webkit-scrollbar{
+width: 10px;
+}
+
+
+.like::-webkit-scrollbar-track{
+    background-color: rgb(169, 164, 164);
+    border-radius: 20px;
+    }
+
+
+    .like::-webkit-scrollbar-thumb{
+        background-color: rgb(97, 75, 75);
+        border-radius: 40px;
+        }
+    
 
 
 .pol{
     width: 80%;
     float: right;
     text-align: center;
-    margin-top: 110px;
+    
 
 
 }
@@ -80,3 +97,13 @@
 
 }
 
+
+
+hr{
+    margin: 0;
+}
+
+.Lstyle{
+    height:150px;
+    /* background-color:red */
+}

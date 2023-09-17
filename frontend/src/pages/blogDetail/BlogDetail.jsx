@@ -5,15 +5,43 @@ import { useState } from 'react'
 import styles from './blogDetail.module.css'
 import { getBlogById } from '../../api/internal'
 import Loader from '../../components/Loader/loader'
-
+import { getComments } from '../../api/internal'
+import { useSelector } from 'react-redux'
+import { PostComments } from '../../api/internal'
 const BlogDetail = () => {
+  const author=useSelector((state)=>state.users._id)
     const params=useParams();
     const {id}=params;
-    const [blog,setBlog]=useState({});
-    const [load,setLoad]=useState(false);
+
     // or 
     // const id = params.id
     
+    const [blog,setBlog]=useState({});
+    const [comments,setComments]=useState([]);
+    const [pcomment,setpcomment]=useState("");
+    const [load,setLoad]=useState(false);
+    const [load1,setLoad1]=useState(false);
+const submitHandler= async()=>{
+  let obj={
+    content:pcomment,
+    blog:id,
+    author
+  }
+
+  setLoad1(true);
+  // sending data
+    let response3 = await PostComments(obj);
+
+
+  // calling comments
+  let response2=await getComments(id);
+  if(response2.status===200){
+  setComments(response2.data.data)
+  }
+setpcomment("");
+ setLoad1(false);
+
+}
 
     useEffect(()=>{
 (async function getById(){
@@ -24,11 +52,18 @@ if(response.status===200){
 setBlog(response.data.blog)
 // console.log(blog);   // -->it is showwing empty object as initialized 
 }
+
+let response1=await getComments(id);
+if(response1.status===200){
+setComments(response1.data.data)
+}
+
 setLoad(false)
 })()
+window.scrollTo(0, 0);
     },[id])
     
-    // console.log(blog); 
+    // console.log(comments); 
 
   return (
     <>
@@ -48,13 +83,29 @@ setLoad(false)
         </div>
         <div className="col-md-6">
           <div className={styles.like}>
-             
-        
+          <br />
+          {comments.length===0 &&(
+            <>
+            <p>no comments posted</p>
+            <hr/>
+            </>
+            )}
+        {comments.map((ele,ind,arr)=>(
+          <div key={ind}>
+          <div>{ele.authorUserName}</div>
+          <div>{new Date(ele.createdAt).toDateString()}</div>
+          <h4>{ele.content}</h4>
+          <hr/>
+          </div>
+        ))}
 
           </div>
           <div className={styles.pol}>
-              <input className={styles.input} type="text"  placeholder='post a comment'/>
-              <button className={styles.post}>Post</button>
+            <div className={styles.Lstyle}>
+            {load1? <Loader/> : ""}
+            </div>
+              <input className={styles.input} onChange={(e)=>setpcomment(e.target.value)} value={pcomment} type="text"  placeholder='post a comment'/>
+              <button className={styles.post}  onClick={submitHandler} >Post</button>
               <br /><br /><br />
             </div>
 

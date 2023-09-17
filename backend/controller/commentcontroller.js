@@ -55,6 +55,7 @@ try {
 }
 
 let commentDto=[];
+// console.log(comments);
 for (let i=0; i<comments.length; i++){
     const CDTO=new CommentDTO(comments[i]);
     commentDto.push(CDTO);
