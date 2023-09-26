@@ -8,7 +8,10 @@ import Loader from '../../components/Loader/loader'
 import { getComments } from '../../api/internal'
 import { useSelector } from 'react-redux'
 import { PostComments } from '../../api/internal'
+import { blogDelete } from '../../api/internal'
+import { useNavigate } from 'react-router-dom'
 const BlogDetail = () => {
+  const naviagte=useNavigate();
   const author=useSelector((state)=>state.users._id)
     const params=useParams();
     const {id}=params;
@@ -21,6 +24,15 @@ const BlogDetail = () => {
     const [pcomment,setpcomment]=useState("");
     const [load,setLoad]=useState(false);
     const [load1,setLoad1]=useState(false);
+
+const deleteBlog=async (id)=>{
+// alert(id)
+let response=await blogDelete(id)
+if(response.status===200){
+naviagte('/blogs')
+}
+}
+
 const submitHandler= async()=>{
   let obj={
     content:pcomment,
@@ -30,7 +42,7 @@ const submitHandler= async()=>{
 
   setLoad1(true);
   // sending data
-    let response3 = await PostComments(obj);
+     await PostComments(obj);
 
 
   // calling comments
@@ -63,7 +75,7 @@ setLoad(false)
 window.scrollTo(0, 0);
     },[id])
     
-    // console.log(comments); 
+    console.log(blog); 
 
   return (
     <>
@@ -78,7 +90,7 @@ window.scrollTo(0, 0);
           <img src={blog.photo} width="300px" height={300} alt="forgotten" />
           <p>{blog.content}</p>
           </div>
-          <div className={styles.last}><button className={styles.edit}>Edit</button> <button className={styles.delete}>delete</button></div>
+         {blog.authorId===author && <div className={styles.last}><button className={styles.edit} onClick={()=>{naviagte(`/editBlog/${blog._id}`)}} >  Edit</button> <button onClick={()=>deleteBlog(blog._id)} className={styles.delete}>delete</button></div>}
        <br /><br /><br />
         </div>
         <div className="col-md-6">

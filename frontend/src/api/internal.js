@@ -113,6 +113,23 @@ export const PostComments=async (data)=>{
     
     
     }
+
+export const blogDelete= async (id)=>{
+let response;
+try {
+    response = await api.delete(`/blog/${id}`)
+} catch (error) {
+    return error
+}
+
+return response
+
+
+}
+
+
+
+
     
     
 

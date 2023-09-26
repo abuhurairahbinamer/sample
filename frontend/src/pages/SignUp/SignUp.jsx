@@ -15,8 +15,8 @@ const SignUp = (props) => {
 
 useEffect(()=>{
     if(props.auth){
-        navigate(-1);
-        // navigate('/');
+        // navigate(-1);   // if you click on sign up button you will go to previous page because changing redux state causes the component to re-render and useEffect hook will run as props.auth will be changed ,so you will go to previous page
+        navigate('/');
     }
 },[navigate,props.auth])
 
