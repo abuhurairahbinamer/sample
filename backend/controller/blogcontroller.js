@@ -147,11 +147,12 @@ const updateBlogSchema=Joi.object({
   content:Joi.string().required(),
   author:Joi.string().regex(mongodbIdPattern).required(),
   blogId:Joi.string().regex(mongodbIdPattern).required(),
-  photo:Joi.string()
+  photo:Joi.string().allow(''),
 })
 
 const {error}=updateBlogSchema.validate(req.body);
 if(error){
+ 
   return next(error);
 }
 const {title,content,author,blogId,photo} = req.body;

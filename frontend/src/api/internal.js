@@ -128,6 +128,19 @@ return response
 }
 
 
+export const editBlog = async(data)=>{
+let response;
+try {
+ response=await api.put('/blog',data)   
+} catch (error) {
+    return error;
+}
+
+return response;
+
+}
+
+
 
 
     
