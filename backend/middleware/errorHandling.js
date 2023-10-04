@@ -9,8 +9,15 @@ const errorHandler=(error,req,res,next)=>{
 
 
     if (error instanceof ValidationError){
+       
         status = 401;
         data.message = error.message;
+       
+        // console.log('hell error',error.details[0].type)
+         if(error.details[0].type==='string.pattern.base'){
+            status=401;
+            data.message="IDError"
+         }
         // console.log("hellow")
         return res.status(status).json(data);
     }

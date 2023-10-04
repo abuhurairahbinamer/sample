@@ -63,9 +63,21 @@ if(response.status===200){
 // or  setdata(s);
 
 }
+
+else if(response.response && response.response.data && response.response.data.message==='IDError' ){
+  navigate('/*')
+}
+
+// else if( response.response && response.response.status===401 ){
+  // console.log(response)
+  // navigate('/login')
+// }
+
+
+
   })();
 
-},[params.id,author])
+},[params.id,author,navigate])
 
 
  //
@@ -96,6 +108,8 @@ console.log(data);
 
   return (
     <div>
+{/* <button onClick={()=>navigate('/*')}>nav to error</button> */}
+     
       <div className={styles.child}>
         {load? <Loader/>:""}
       <input placeholder='enter the title' value={data.title}  name='title' type="text" onChange={(e)=>{setdata((pre)=>({...pre,[e.target.name]:e.target.value}))}} className={`${styles.border}  ${styles.height}`} />
@@ -112,6 +126,7 @@ console.log(data);
 <br /><br />
       <button className={styles.submit} onClick={()=>submit()}>submit</button>
 <br /><br />
+
       </div>
     </div>
   )}

@@ -65,17 +65,33 @@ setBlog(response.data.blog)
 // console.log(blog);   // -->it is showwing empty object as initialized 
 }
 
+else if(response.response && response.response.data && response.response.data.message==='IDError' ){
+  naviagte('/*')
+}
+
+// else if( response.response && response.response.status===401 ){
+  // console.log(response)
+  // naviagte('/login')
+// }
+
+
+
+
 let response1=await getComments(id);
 if(response1.status===200){
 setComments(response1.data.data)
 }
 
+
+
+console.log(response);
+
 setLoad(false)
 })()
 window.scrollTo(0, 0);
-    },[id])
+    },[id,naviagte])
     
-    console.log(blog); 
+    // console.log(blog); 
 
   return (
     <>
