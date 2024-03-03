@@ -15,9 +15,9 @@ return next(error);
 
 let id;
 try {
-    _id= JWTService.verfiyRefreshToken(refreshToken)._id; 
+    // _id= JWTService.verfiyRefreshToken(refreshToken)._id; 
     
-    // _id= JWTService.verfiyaccessToken(accessToken)._id;  -> you can also use this
+    _id= JWTService.verifyAccessToken(accessToken)._id; // -> you can also use this
 
     const user=await User.findOne({_id:_id})
     const userDto=new userDTO(user);

@@ -231,7 +231,11 @@ try {
 
 try {
     const match= await RefreshToken.findOne({_id: id , token:originalRefreshToken})
+    // const match= await RefreshToken.findOne({_id: id})
     if(!match){
+        console.log( 'id is:: ',id)
+        console.log('token is:: ',originalRefreshToken);
+        
         console.log("precious");
         const error={
             status:401,
@@ -262,6 +266,7 @@ try {
 }
 
  catch (error) {
+    // console.log("heoolo");
 return next(error)
     }
 
@@ -272,4 +277,5 @@ return res.status(200).json({User:userDto,auth: true})
 }
 }
 module.exports=authController;
+
 

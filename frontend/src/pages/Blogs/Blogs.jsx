@@ -27,6 +27,7 @@ if(response.status===200){
     setBlogs(response.data.blogs);
 }
 
+
  if(response.response && response.response.status===401){  // if you dont write response.response before &&  and only write response.response.status===401 then it will throw error
 console.log(response)
         dispatch(resetUser());

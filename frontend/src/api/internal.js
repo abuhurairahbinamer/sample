@@ -144,6 +144,30 @@ return response;
 
 
     
-    
+  api.interceptors.response.use(
+    async config=>{
+        // console.log("it is me",config);
+        // config.status=401;
+        return config
+    }
+    ,async (error)=>{
+        const originalReqiuest=error.config;
+          try {
+        
+            if(error.response.status===401 && originalReqiuest && !originalReqiuest._isRetry){
+                originalReqiuest._isRetry=true;
+                   await api.get('/refresh');
+                   return api.request(originalReqiuest)    
+            }
+          
+          } catch (error) {
+            return error;
+          }
+
+        //  return api.request(originalReqiuest)    // it  caused infinite loop but now it is not causing .i dont know why!
+        // console.log("it is error",error);
+    }
+
+  )  
 
 

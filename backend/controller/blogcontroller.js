@@ -92,6 +92,7 @@ async getall(req,res,next){
 
     return res.status(200).json({blogs:blogDto});
   } catch (error) {
+  
     return next(error)
   }
 },
