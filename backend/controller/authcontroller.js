@@ -248,10 +248,11 @@ try {
 }
 
 //3. generate new token
-
+let p;
 try {
     let accessToken=JWTService.signAccessToken({_id:id},'30m');
     let refreshToken=JWTService.signRefreshToken({_id:id},'60m');
+    p=refreshToken;
    // update db
     await RefreshToken.updateOne({_id:id},{token:refreshToken});
 
@@ -273,6 +274,7 @@ return next(error)
 //4.  return response
 const user=await User.findOne({_id:id});
 const userDto=new userDTO(user);
+console.log('passed and token is :: ',p);
 return res.status(200).json({User:userDto,auth: true})
 }
 }
