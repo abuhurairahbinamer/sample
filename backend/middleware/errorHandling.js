@@ -30,7 +30,7 @@ const errorHandler=(error,req,res,next)=>{
     if (error.message){
         data.message = error.message;
     }
-
+console.log(error)
     return res.status(status).json(data);
 }
 

@@ -13,6 +13,7 @@ const SignUp = (props) => {
   const dispathch=useDispatch();
   const [error,setError]=useState('');
 
+
 useEffect(()=>{
     if(props.auth){
         // navigate(-1);   // if you click on sign up button you will go to previous page because changing redux state causes the component to re-render and useEffect hook will run as props.auth will be changed ,so you will go to previous page
@@ -30,9 +31,11 @@ const data={
   password:values.password,
   confirmPassword:values.confirmPassword
 }
-   
+   try {
+    
    const response=await signup(data);
-   if(response.status===201){
+   console.log(response)
+      if(response?.status===201){
     //setUser
     const user={
       _id:response.data.user._id,
@@ -58,6 +61,13 @@ const data={
     setError(response.message);
   }
    
+   }
+    catch (error) {
+    setError(error.message)
+    console.log(error)
+    return 
+  }
+
    
  }
 

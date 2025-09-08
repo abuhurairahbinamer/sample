@@ -40,7 +40,7 @@ const handleLogin = async ()=>{
 const response=await login(data)
 // console.log(response);
 
-if(response.status===200){
+if(response?.status===200){
 
 //1. setUser
 const user={
@@ -54,14 +54,14 @@ dispatch(setUser(user))
 navigate('/')
 }
 
-else if(response.code==='ERR_BAD_REQUEST'){
+else if(response?.code==='ERR_BAD_REQUEST'){
   // display error message
 setError(response.response.data.message)
 
 
 }
 
-else{   // by me
+else {   // by me
   setError(response.message);
 }
 

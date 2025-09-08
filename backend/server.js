@@ -21,6 +21,19 @@ const corsOption={
 app.use(cookieParser());
 app.use(express.json({limit:"50mb"}));  // application can send and receive data in jason form -->{limit:"50mb"} is used to increase the limit of the req.body i.e if larger image is passed than it will not thrown the error
 app.use(cors(corsOption))
+
+
+// For production, specify allowed origins
+// const allowedOrigins = ['http://localhost:3000'];
+// app.use(cors({
+//     origin: function (origin, callback) {
+//         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     }
+// }));
 app.use('/storage',express.static('storage'));  // for making image accessible on server
 
 app.use(router);

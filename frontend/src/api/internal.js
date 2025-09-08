@@ -161,11 +161,12 @@ return response;
             }
           
           } catch (error) {
-            return error;
+           return Promise.reject(error);
           }
 
         //  return api.request(originalReqiuest)    // it  caused infinite loop but now it is not causing .i dont know why!
         // console.log("it is error",error);
+         return Promise.reject(error);
     }
 
   )  
