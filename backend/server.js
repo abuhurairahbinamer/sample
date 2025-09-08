@@ -36,6 +36,10 @@ app.use(cors(corsOption))
 // }));
 app.use('/storage',express.static('storage'));  // for making image accessible on server
 
+app.get('/',(req,res)=>{
+    res.json('hellow')
+})
+
 app.use(router);
 
 
