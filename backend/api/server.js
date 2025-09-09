@@ -1,11 +1,11 @@
 const express=require('express');
-const dbconnect=require("./database/index");
+const dbconnect=require("../database/index");
 const app=express();
-const {PORT}=require('./config/index')
-const errorHandler=require('./middleware/errorHandling')
+const {PORT}=require('../config/index')
+const errorHandler=require('../middleware/errorHandling')
 // const Blog=require('./models/blog');
 // const User=require('./models/user');
-const router=require('./routes/index')
+const router=require('../routes/index')
 const cookieParser=require('cookie-parser');
 const cors=require('cors');
 
