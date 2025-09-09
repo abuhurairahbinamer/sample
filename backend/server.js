@@ -12,7 +12,7 @@ const cors=require('cors');
 
 const corsOption={
     credentials:true,
-    origin:['http://localhost:3000']
+    origin: ['http://localhost:3000', 'https://your-frontend.vercel.app'] // add Vercel frontend
 }
 
 
@@ -23,17 +23,7 @@ app.use(express.json({limit:"50mb"}));  // application can send and receive data
 app.use(cors(corsOption))
 
 
-// For production, specify allowed origins
-// const allowedOrigins = ['http://localhost:3000'];
-// app.use(cors({
-//     origin: function (origin, callback) {
-//         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed by CORS'));
-//         }
-//     }
-// }));
+
 app.use('/storage',express.static('storage'));  // for making image accessible on server
 
 app.get('/',(req,res)=>{

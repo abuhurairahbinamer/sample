@@ -23,6 +23,7 @@
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.3.2",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "serverless-http": "^4.0.0"
   }
 }
