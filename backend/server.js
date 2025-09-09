@@ -8,7 +8,7 @@ const errorHandler=require('./middleware/errorHandling')
 const router=require('./routes/index')
 const cookieParser=require('cookie-parser');
 const cors=require('cors');
-
+const serverless = require("serverless-http");
 
 const corsOption={
     credentials:true,
@@ -46,8 +46,10 @@ const PORT1=PORT
 
 // app.get('/',(req,res)=> res.json({msg:"helloew world"}))
 app.use(errorHandler);  // always try to keep it at the end
-app.listen(PORT1,()=>{   // you did not pass parameter here so the there was no response on browser
-    console.log("app is running at the port  " + PORT1 );
-});
 
+// app.listen(PORT1,()=>{   // you did not pass parameter here so the there was no response on browser
+//     console.log("app is running at the port  " + PORT1 );
+// });
+module.exports = app;
+module.exports.handler = serverless(app);
 // app.listen(PORT,console.log(`backend is running on port: ${PORT}`))
